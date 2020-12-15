@@ -3,19 +3,29 @@ const informacoesClientes = [
     {
         cpf: 12345678998,
         nome: "Helton"
+    },{
+        cpf: 98765432112,
+        nome: "Teste"
     }
 ]
 
-// Monta tabela
-const conteudoLinha = `
-    <tr>
-        <td>${informacoesClientes[0].cpf}</td>
-        <td>${informacoesClientes[0].nome}</td>
-    </tr>
-`
-
-//Insere dado no html
+//Seleciona a tabela por data-attribute
 const corpoTabela = document.querySelector("[data-conteudo-tabela]");
 
-corpoTabela.innerHTML = conteudoLinha;
-// console.log(corpoTabela);
+const exibeCliente = (cpf, nome) => {
+    // Monta tabela
+    const linha = document.createElement('tr')
+    const conteudoLinha = `
+        <td>${cpf}</td>
+        <td>${nome}</td>
+    `
+    
+    linha.innerHTML = conteudoLinha
+
+    return linha
+}
+
+//Insere dado no html
+informacoesClientes.forEach( indice => {
+    corpoTabela.appendChild(exibeCliente(indice.cpf, indice.nome))
+})
