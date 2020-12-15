@@ -26,6 +26,10 @@ const exibeCliente = (cpf, nome) => {
 }
 
 //Insere dado no html
-informacoesClientes.forEach( indice => {
-    corpoTabela.appendChild(exibeCliente(indice.cpf, indice.nome))
-})
+listarClientes().then( exibe => {
+    exibe.forEach( indice => {
+        corpoTabela.appendChild(exibeCliente(indice.cpf, indice.nome))
+    })
+}
+
+)
